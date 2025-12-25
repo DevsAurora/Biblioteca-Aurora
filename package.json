@@ -4,6 +4,7 @@
   "description": "Projeto Aurora: uma aplicação web para gerenciamento de acervo, usuários e empréstimos, criada com foco em usabilidade, escalabilidade e design limpo.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Th1y/Biblioteca-Aurora#readme",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.2.1"
   }
 }
