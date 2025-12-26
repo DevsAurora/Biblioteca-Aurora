@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware para servir arquivos estáticos (CSS, JS, imagens)
-app.use(express.static('public')); 
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Rotas principais da aplicação
 const homeRoutes = require('./routes/home');
