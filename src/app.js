@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Rotas principais da aplicação
-const homeRoutes = require('./routes/home');
+const homeRoutes = require('./routes/homeRoutes');
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
