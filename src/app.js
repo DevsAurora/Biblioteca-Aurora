@@ -22,6 +22,7 @@ const livroRoutes = require('./routes/livroRoutes');
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
+app.use('/livros', livroRoutes);
 
 // Inicializa o servidor
 app.listen(port, () => {
