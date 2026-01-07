@@ -1,6 +1,6 @@
 const express = require('express'); 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 const path = require('path'); 
 
@@ -22,7 +22,6 @@ const livroRoutes = require('./routes/livroRoutes');
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
-app.use('/livros', livroRoutes);
 
 // Inicializa o servidor
 app.listen(port, () => {
