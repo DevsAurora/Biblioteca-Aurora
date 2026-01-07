@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD de Livros</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form { margin-bottom: 20px; }
+    input { margin: 5px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>Cadastro de Livros</h1>
+  <form action="/livros" method="POST">
+    <input type="text" name="titulo" placeholder="Título" required>
+    <input type="text" name="autor" placeholder="Autor" required>
+    <input type="number" name="ano_publicacao" placeholder="Ano">
+    <input type="text" name="genero" placeholder="Gênero">
+    <input type="text" name="isbn" placeholder="ISBN" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <h2>Lista de Livros</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Ano</th>
+        <th>Gênero</th>
+        <th>ISBN</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% livros.forEach(l => { %>
+        <tr>
+          <td><%= l.titulo %></td>
+          <td><%= l.autor %></td>
+          <td><%= l.ano_publicacao || "" %></td>
+          <td><%= l.genero || "" %></td>
+          <td><%= l.isbn %></td>
+          <td>
+            <!-- Formulário de edição -->
+            <form action="/livros/update/<%= l.id %>" method="POST" style="display:inline;">
+              <input type="text" name="titulo" value="<%= l.titulo %>" required>
+              <input type="text" name="autor" value="<%= l.autor %>" required>
+              <input type="number" name="ano_publicacao" value="<%= l.ano_publicacao || "" %>">
+              <input type="text" name="genero" value="<%= l.genero || "" %>">
+              <input type="text" name="isbn" value="<%= l.isbn %>" required>
+              <button type="submit">Atualizar</button>
+            </form>
+
+            <!-- Formulário de exclusão -->
+            <form action="/livros/delete/<%= l.id %>" method="POST" style="display:inline;">
+              <button type="submit">Excluir</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
