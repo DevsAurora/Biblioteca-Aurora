@@ -21,12 +21,14 @@
   },
   "homepage": "https://github.com/Th1y/Biblioteca-Aurora#readme",
   "dependencies": {
+    "@prisma/client": "^6.19.1",
     "ejs": "^3.1.10",
     "express": "^5.2.1"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "concurrently": "^9.2.1",
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.11",
+    "prisma": "^6.19.1"
   }
 }
