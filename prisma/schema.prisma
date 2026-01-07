@@ -8,12 +8,30 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model usuario {
-  idusuario     BigInt    @id @default(autoincrement())
+model Livro {
+  id             BigInt    @id @default(autoincrement())
+  titulo         String    @db.VarChar(200)
+  autor          String    @db.VarChar(150)
+  ano_publicacao Int?
+  genero         String?   @db.VarChar(100)
+  isbn           String    @unique @db.VarChar(20)
+  criado_em      DateTime? @default(now()) @db.Timestamp(6)
+  atualizado_em  DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model Usuario {
+  id            BigInt    @id @default(autoincrement())
   nome          String    @db.VarChar(100)
   sobrenome     String?   @db.VarChar(100)
   email         String    @unique @db.VarChar(150)
   senha         String    @db.VarChar(200)
+  role          Role      @default(LEITOR)
   criado_em     DateTime? @default(now()) @db.Timestamp(6)
   atualizado_em DateTime? @default(now()) @db.Timestamp(6)
+}
+
+enum Role {
+  LEITOR
+  BIBLIOTECARIO
+  PROFESSOR
 }
