@@ -1,8 +1,11 @@
 const express = require('express'); 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const path = require('path'); 
+
+// Middleware para interpretar requisições com corpo em JSON
+app.use(express.json());
 
 // Configuração do motor de templates
 app.set('view engine', 'ejs'); 
@@ -14,9 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas principais da aplicação
 const homeRoutes = require('./routes/homeRoutes');
-
+const livroRoutes = require('./routes/livroRoutes');
 // Usa as rotas definidas
 app.use('/', homeRoutes);
+app.use('/livros', livroRoutes);
 
 // Inicializa o servidor
 app.listen(port, () => {
