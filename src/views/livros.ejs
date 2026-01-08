@@ -2,29 +2,43 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>CRUD de Livros</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    form { margin-bottom: 20px; }
-    input { margin: 5px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background: #f4f4f4; }
-  </style>
+  <title>Gerenciar Livros</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Cadastro de Livros</h1>
+  <h1>Lista de Livros</h1>
+
+  <!-- Formulário para criar novo livro -->
+  <h2>Adicionar Livro</h2>
   <form action="/livros" method="POST">
-    <input type="text" name="titulo" placeholder="Título" required>
-    <input type="text" name="autor" placeholder="Autor" required>
-    <input type="number" name="ano_publicacao" placeholder="Ano">
-    <input type="text" name="genero" placeholder="Gênero">
-    <input type="text" name="isbn" placeholder="ISBN" required>
-    <button type="submit">Cadastrar</button>
+    <label>Título:</label>
+    <input type="text" name="titulo" required>
+    <br>
+
+    <label>Autor:</label>
+    <input type="text" name="autor" required>
+    <br>
+
+    <label>Ano de Publicação:</label>
+    <input type="number" name="ano_publicacao">
+    <br>
+
+    <label>Gênero:</label>
+    <input type="text" name="genero">
+    <br>
+
+    <label>ISBN:</label>
+    <input type="text" name="isbn" required>
+    <br>
+
+    <button type="submit">Salvar</button>
   </form>
 
-  <h2>Lista de Livros</h2>
-  <table>
+  <hr>
+
+  <!-- Lista de livros existentes -->
+  <h2>Livros cadastrados</h2>
+  <table border="1" cellpadding="8">
     <thead>
       <tr>
         <th>Título</th>
@@ -36,26 +50,26 @@
       </tr>
     </thead>
     <tbody>
-      <% livros.forEach(l => { %>
+      <% livros.forEach(livro => { %>
         <tr>
-          <td><%= l.titulo %></td>
-          <td><%= l.autor %></td>
-          <td><%= l.ano_publicacao || "" %></td>
-          <td><%= l.genero || "" %></td>
-          <td><%= l.isbn %></td>
+          <td><%= livro.titulo %></td>
+          <td><%= livro.autor %></td>
+          <td><%= livro.ano_publicacao %></td>
+          <td><%= livro.genero %></td>
+          <td><%= livro.isbn %></td>
           <td>
-            <!-- Formulário de edição -->
-            <form action="/livros/update/<%= l.id %>" method="POST" style="display:inline;">
-              <input type="text" name="titulo" value="<%= l.titulo %>" required>
-              <input type="text" name="autor" value="<%= l.autor %>" required>
-              <input type="number" name="ano_publicacao" value="<%= l.ano_publicacao || "" %>">
-              <input type="text" name="genero" value="<%= l.genero || "" %>">
-              <input type="text" name="isbn" value="<%= l.isbn %>" required>
+            <!-- Formulário para atualizar -->
+            <form action="/livros/<%= livro.id %>/update" method="POST" style="display:inline;">
+              <input type="text" name="titulo" value="<%= livro.titulo %>" required>
+              <input type="text" name="autor" value="<%= livro.autor %>" required>
+              <input type="number" name="ano_publicacao" value="<%= livro.ano_publicacao %>">
+              <input type="text" name="genero" value="<%= livro.genero %>">
+              <input type="text" name="isbn" value="<%= livro.isbn %>" required>
               <button type="submit">Atualizar</button>
             </form>
 
-            <!-- Formulário de exclusão -->
-            <form action="/livros/delete/<%= l.id %>" method="POST" style="display:inline;">
+            <!-- Formulário para deletar -->
+            <form action="/livros/<%= livro.id %>/delete" method="POST" style="display:inline;">
               <button type="submit">Excluir</button>
             </form>
           </td>
