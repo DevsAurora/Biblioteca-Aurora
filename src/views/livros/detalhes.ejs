@@ -4,6 +4,12 @@
   <title>Detalhes do Livro</title>
 </head>
 <body>
+
+  <nav> <!-- Navegação, deve ser substituida por partials/navbar.ejs -->
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/livros">Livros</a></li>
+    </ul>
   <h1><%= livro.titulo %></h1>
 
   <p><strong>Título:</strong> <%= livro.titulo %></p>
@@ -28,8 +34,6 @@
     <button type="submit">Excluir</button>
   </form>
 
-  <br><br>
-  <a href="/livros">Voltar para lista</a>
 </body>
 </html>
 
