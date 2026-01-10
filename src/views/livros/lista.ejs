@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Livros</title>
+</head>
+<body>
+  <h1>Lista de Livros</h1>
+
+  <nav></nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/livros">Livros</a></li>
+    </ul>
+  </nav>
+
+  <!-- Botão para criar novo livro -->
+  <a href="/livros/form">Novo Livro</a>
+
+  <ul>
+    <% livros.forEach(livro => { %>
+      <li>
+        <strong><%= livro.titulo %></strong> - <%= livro.autor %> - <%= livro.genero %>
+        
+        <!-- Botão Editar (GET) -->
+        <form action="/livros/form" method="GET" style="display:inline;">
+          <input type="hidden" name="id" value="<%= livro.id %>">
+          <button type="submit">Editar</button>
+        </form>
+
+        <!-- Botão Excluir (POST) -->
+        <form action="/livros/<%= livro.id %>/delete" method="POST" style="display:inline;">
+          <button type="submit">Excluir</button>
+        </form>
+
+        <!-- Link de detalhes -->
+        <a href="/livros/<%= livro.id %>">Detalhes</a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

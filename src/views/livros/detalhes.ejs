@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalhes do Livro</title>
+</head>
+<body>
+
+  <nav> <!-- Navegação, deve ser substituida por partials/navbar.ejs -->
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/livros">Livros</a></li>
+    </ul>
+  <h1><%= livro.titulo %></h1>
+
+  <p><strong>Título:</strong> <%= livro.titulo %></p>
+  <p><strong>Autor:</strong> <%= livro.autor %></p>
+  <p><strong>Ano:</strong> <%= livro.ano_publicacao %></p>
+  <p><strong>Gênero:</strong> <%= livro.genero %></p>
+  <p><strong>ISBN:</strong> <%= livro.isbn %></p>
+  <p><strong>Criado em:</strong> <%= livro.criado_em %></p>
+  <p><strong>Atualizado em:</strong> <%= livro.atualizado_em %></p>
+
+  <a href="/livros">Voltar para lista</a> |
+  <a href="/livros/form?id=<%= livro.id %>">Editar</a>
+
+    <!-- Botão Editar -->
+  <form action="/livros/form" method="GET" style="display:inline;">
+    <input type="hidden" name="id" value="<%= livro.id %>">
+    <button type="submit">Editar</button>
+  </form>
+
+  <!-- Botão Excluir -->
+  <form action="/livros/<%= livro.id %>/delete" method="POST" style="display:inline;">
+    <button type="submit">Excluir</button>
+  </form>
+
+</body>
+</html>
+
+</body>
+</html>
