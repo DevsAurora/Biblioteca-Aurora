@@ -17,6 +17,8 @@ model Livro {
   isbn           String    @unique @db.VarChar(20)
   criado_em      DateTime? @default(now()) @db.Timestamp(6)
   atualizado_em  DateTime @updatedAt @db.Timestamp(6)
+
+  exemplar Exemplar[]
 }
 
 model Usuario {
@@ -28,10 +30,39 @@ model Usuario {
   role          Role      @default(LEITOR)
   criado_em     DateTime? @default(now()) @db.Timestamp(6)
   atualizado_em DateTime @updatedAt @db.Timestamp(6)
+
+  emprestimos  Emprestimo[]
 }
 
 enum Role {
   LEITOR
   BIBLIOTECARIO
   PROFESSOR
+}
+
+model Exemplar { // campos id, livro_id, status, relação com Livro 1:N Exemplar
+  id            BigInt    @id @default(autoincrement())
+  livro_id      BigInt
+  status        Status
+  livro         Livro     @relation(fields: [livro_id], references: [id])
+
+  emprestimos   Emprestimo[]
+}
+
+enum Status {
+  DISPONIVEL
+  EMPRESTADO
+  RESERVADO
+  ATRASADO
+}
+
+model Emprestimo { // campos id, usuario_id, exemplar_id, data_emprestimo, data_devolucao_prevista, data_devolucao_real, relação com Usuario 1:N Emprestimo, Exemplar 1:N Emprestimo
+  id                      BigInt    @id @default(autoincrement())
+  usuario_id              BigInt
+  exemplar_id             BigInt
+  data_emprestimo         DateTime  @default(now()) @db.Timestamp(6)
+  data_devolucao_prevista DateTime  @db.Timestamp(6)
+  data_devolucao_real     DateTime? @db.Timestamp(6)
+  usuario                 Usuario   @relation(fields: [usuario_id], references: [id])
+  exemplar                Exemplar  @relation(fields: [exemplar_id], references: [id])
 }
