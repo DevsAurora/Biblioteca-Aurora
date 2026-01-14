@@ -27,7 +27,7 @@ model Usuario {
   sobrenome     String?   @db.VarChar(100)
   email         String    @unique @db.VarChar(150)
   senha         String    @db.VarChar(200)
-  role          Role      @default(LEITOR)
+  role          Role      @default(ALUNO)
   criado_em     DateTime? @default(now()) @db.Timestamp(6)
   atualizado_em DateTime @updatedAt @db.Timestamp(6)
 
@@ -35,7 +35,7 @@ model Usuario {
 }
 
 enum Role {
-  LEITOR
+  ALUNO
   BIBLIOTECARIO
   PROFESSOR
 }
