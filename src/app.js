@@ -13,10 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 // Rotas principais da aplicação
 const homeRoutes = require('./routes/homeRoutes');
 const livroRoutes = require('./routes/livros-routes');
+const usuarioRoutes = require('./routes/usuarios-routes');
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
 app.use('/livros', livroRoutes);
+app.use('/usuarios', usuarioRoutes);
 
 // Inicializa o servidor
 app.listen(port, () => {

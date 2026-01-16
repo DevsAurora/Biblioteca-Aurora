@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Usuários</title>
+</head>
+<body>
+  <h1>Usuários</h1>
+  <nav></nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/livros">Livros</a></li>
+      <li><a href="/usuarios">Usuários</a></li>
+    </ul>
+  </nav>
+
+  <a href="/usuarios/form">Criar novo usuário</a>
+
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% usuarios.forEach(usuario => { %>
+        <tr>
+          <td><%= usuario.id %></td>
+          <td><%= usuario.nome %></td>
+          <td><%= usuario.sobrenome %></td>
+          <td><%= usuario.email %></td>
+          <td><%= usuario.role %></td>
+          <td>
+            <a href="/usuarios/form/<%= usuario.id %>">Editar</a>
+            <form action="/usuarios/<%= usuario.id %>/delete" method="POST" style="display:inline;">
+              <button type="submit">Excluir</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
