@@ -4,8 +4,8 @@ module.exports = {
   ignore: ["node_modules", "logs", "tmp"],
   port: 3001,                             // porta do BrowserSync
   open: true,                             // abre o navegador
-  reloadDelay: 800,                       // espera o nodemon subir
-  reloadDebounce: 500,                    // evita múltiplos reloads em sequência
+  reloadDelay: 1200,                       // espera o nodemon subir
+  reloadDebounce: 700,                    // evita múltiplos reloads em sequência
   watchEvents: ["change", "add", "unlink"],
   watchOptions: { ignoreInitial: false },
   ghostMode: false                        // evita sync de cliques/scroll atrapalhando testes
