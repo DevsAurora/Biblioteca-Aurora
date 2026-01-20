@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login OK</title></head>
+<body>
+  <h1>Login realizado com sucesso!</h1>
+    <%- include('partials/nav') %>
+  <p>Usuário: <%= usuario.nome %> (<%= usuario.role %>)</p>
+  <p>Token JWT:</p>
+  <textarea cols="80" rows="5"></textarea>
+  <p>Use esse token no header <code>Authorization: Bearer TOKEN</code> para acessar rotas protegidas.</p>
+</body>
+</html>

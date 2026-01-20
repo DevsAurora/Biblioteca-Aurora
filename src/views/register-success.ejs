@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Registro OK</title></head>
+<body>
+  <h1>Usuário registrado com sucesso!</h1>
+    <%- include('partials/nav') %>
+  <p>Nome: <%= usuario.nome %></p>
+  <p>Email: <%= usuario.email %></p>
+  <p>Role: <%= usuario.role %></p>
+  <a href="/auth/login">Ir para Login</a>
+</body>
+</html>

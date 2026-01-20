@@ -4,15 +4,17 @@ const router = express.Router();
 const controller = require("../controllers/livros-controller");
 const validarSchema = require("../middlewares/validar-schema");
 const LivroSchema = require("../schemas/livro-schema");
+const autenticar = require("../middlewares/auth");
+const autorizar = require("../middlewares/authorize");
 
-// Formulário de criação/edição
-router.get("/form", controller.formLivro);
+// Formulário de criação/edição | Apenas Bibliotecarios
+router.get("/form", autenticar, autorizar(["BIBLIOTECARIO"]), controller.formLivro);
 
-// Criar livro
-router.post("/", validarSchema(LivroSchema), controller.postLivro);
+// Criar livro | Apenas Bibliotecarios
+router.post("/", autenticar, autorizar(["BIBLIOTECARIO"]), validarSchema(LivroSchema), controller.postLivro);
 
 // Atualizar livro
-router.post("/:id/update", validarSchema(LivroSchema), controller.updateLivro);
+router.post("/:id/update", autenticar, autorizar(["BIBLIOTECARIO"]), validarSchema(LivroSchema), controller.updateLivro);
 
 // Listar livros
 router.get("/", controller.getLivros);
@@ -21,6 +23,6 @@ router.get("/", controller.getLivros);
 router.get("/:id", controller.getLivroById);
 
 // Deletar livro
-router.post("/:id/delete", controller.deleteLivro);
+router.post("/:id/delete", autenticar, autorizar(["BIBLIOTECARIO"]), controller.deleteLivro);
 
 module.exports = router;
