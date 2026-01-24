@@ -27,8 +27,14 @@
           <button type="submit">Excluir</button>
         </form>
 
+        <!-- Botão Gerenciar Exemplares (GET) -->
+        <form action="/exemplares/<%= livro.id %>" method="GET" style="display:inline;">
+          <button type="submit">Gerenciar Exemplares</button>
+        </form>
+
         <!-- Link de detalhes -->
         <a href="/livros/<%= livro.id %>">Detalhes</a>
+
       </li>
     <% }) %>
   </ul>
