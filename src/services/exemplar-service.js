@@ -16,4 +16,14 @@ async function atualizarStatus(exemplarId, novoStatus) {
   });
 }
 
-module.exports = { listarPorLivro, atualizarStatus };
+async function criarExemplar(livroId, codigoTombo) {
+  return prisma.exemplar.create({
+    data: {
+      codigo_tombo: codigoTombo,   // cuidado: no schema o campo é codigo_tombo
+      livro_id: BigInt(livroId),
+      status: "DISPONIVEL"
+    }
+  });
+}
+
+module.exports = { listarPorLivro, atualizarStatus, criarExemplar };
