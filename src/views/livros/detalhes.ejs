@@ -19,7 +19,7 @@
   <a href="/livros">Voltar para lista</a> |
   <a href="/livros/form?id=<%= livro.id %>">Editar</a>
 
-    <!-- Botão Editar -->
+  <!-- Botão Editar -->
   <form action="/livros/form" method="GET" style="display:inline;">
     <input type="hidden" name="id" value="<%= livro.id %>">
     <button type="submit">Editar</button>
@@ -30,8 +30,21 @@
     <button type="submit">Excluir</button>
   </form>
 
-</body>
-</html>
+  <hr>
+
+  <!-- Seção de Exemplares -->
+  <h2>Exemplares</h2>
+  <% if (!exemplares || exemplares.length === 0) { %>
+    <p>Nenhum exemplar cadastrado para este livro.</p>
+  <% } else { %>
+    <ul>
+      <% exemplares.forEach(ex => { %>
+        <li>
+          Código Tombo: <%= ex.codigo_tombo %> | Status: <%= ex.status %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
 
 </body>
 </html>

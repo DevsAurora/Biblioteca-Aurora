@@ -21,12 +21,16 @@ const homeRoutes = require('./routes/homeRoutes');
 const livroRoutes = require('./routes/livros-routes');
 const usuarioRoutes = require('./routes/usuarios-routes');
 const authRoutes = require("./routes/auth-routes");
+const exemplaresRoutes = require("./routes/exemplar-routes");
+const emprestimoRoutes = require("./routes/emprestimo-routes");
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
 app.use('/livros', livroRoutes);
 app.use('/usuarios', usuarioRoutes);
 app.use('/auth', authRoutes);
+app.use('/exemplares', exemplaresRoutes);
+app.use('/emprestimos', emprestimoRoutes);
 
 // Inicializa o servidor
 app.listen(port, () => {
