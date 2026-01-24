@@ -1,0 +1,30 @@
+<h2>Empréstimos</h2>
+<ul>
+  <% emprestimos.forEach(emp => { %>
+    <li>
+      Usuário: <%= emp.usuario.nome %> |
+      Exemplar: <%= emp.exemplar.codigo_tombo %> |
+      Status: <%= emp.data_devolucao_real ? "FINALIZADO" : "ATIVO" %> |
+      Início: <%= emp.data_emprestimo %> |
+      Previsto: <%= emp.data_devolucao_prevista %> |
+      Fim: <%= emp.data_devolucao_real ? emp.data_devolucao_real : "-" %>
+
+      <% if (!emp.data_devolucao_real) { %>
+        <form action="/emprestimos/<%= emp.id %>/finalizar" method="POST" style="display:inline;">
+          <button type="submit">Finalizar</button>
+        </form>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
+
+<h3>Registrar novo empréstimo</h3>
+<form action="/emprestimos/novo" method="POST">
+  <label for="usuarioId">Usuário ID:</label>
+  <input type="text" name="usuarioId" required>
+  <label for="exemplarId">Exemplar ID:</label>
+  <input type="text" name="exemplarId" required>
+  <label for="dataDevolucaoPrevista">Data de devolução prevista:</label>
+  <input type="date" name="dataDevolucaoPrevista" required>
+  <button type="submit">Registrar</button>
+</form>
