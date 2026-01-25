@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meus Empréstimos</title>
+</head>
+<body>
+  <h1>Meus Empréstimos</h1>
+
+   <%- include('../partials/nav') %>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Livro</th>
+        <th>Código Tombo</th>
+        <th>Status</th>
+        <th>Data Empréstimo</th>
+        <th>Data Devolução Prevista</th>
+        <th>Data Devolução Real</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% emprestimos.forEach(e => { %>
+        <tr>
+          <td><%= e.exemplar.livro.titulo %></td>
+          <td><%= e.exemplar.codigo_tombo %></td>
+          <td><%= e.exemplar.status %></td>
+          <td><%= e.data_emprestimo.toLocaleDateString() %></td>
+          <td><%= e.data_devolucao_prevista.toLocaleDateString() %></td>
+          <td><%= e.data_devolucao_real ? e.data_devolucao_real.toLocaleDateString() : "-" %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
