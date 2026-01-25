@@ -1,4 +1,6 @@
 <h2>Novo Exemplar</h2>
+    <%- include('partials/nav') %>
+
 <form action="/exemplares/novo/<%= livroId %>" method="POST">
   <label for="codigo_tombo">Código Tombo:</label>
   <input type="text" name="codigo_tombo" required>
