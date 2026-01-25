@@ -47,4 +47,17 @@ async function finalizarEmprestimo(id) {
   return emprestimo;
 }
 
-module.exports = { registrarEmprestimo, listarEmprestimos, finalizarEmprestimo };
+// Listar empréstimos de um usuário
+async function listarPorUsuario(usuarioId) {
+  if (!usuarioId) throw new Error("usuarioId não informado");
+  return prisma.emprestimo.findMany({
+    where: { usuario_id: BigInt(usuarioId) },
+    include: {
+      exemplar: {
+        include: { livro: true } // traz também dados do livro
+      }
+    }
+  });
+}
+
+module.exports = { registrarEmprestimo, listarEmprestimos, finalizarEmprestimo, listarPorUsuario };

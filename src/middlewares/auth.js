@@ -5,7 +5,7 @@ function autenticar(req, res, next) {
   const authHeader = req.headers.authorization;
   const token = authHeader ? authHeader.split(" ")[1] : req.cookies.token; // 👈 busca no cookie
 
-  if (!token) return res.status(401).json({ message: "Token não fornecido" });
+  if (!token) return res.status(401).json({ message: "Token não fornecido, Usuário não autenticado" });
 
   try {
     const payload = jwt.verify(token, SECRET_KEY);

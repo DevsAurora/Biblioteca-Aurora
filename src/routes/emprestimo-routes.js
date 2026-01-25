@@ -7,7 +7,6 @@ const controller = require("../controllers/emprestimo-controller");
 router.get("/", autenticar, autorizar(["BIBLIOTECARIO"]), controller.listar);
 router.post("/novo", autenticar, autorizar(["BIBLIOTECARIO"]), controller.registrar);
 router.post("/:id/finalizar", autenticar, autorizar(["BIBLIOTECARIO"]), controller.finalizar);
-
-
+router.get("/meus", autenticar, autorizar(["ALUNO", "PROFESSOR", "BIBLIOTECARIO"]), controller.listarPorUsuario);
 
 module.exports = router;
