@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head><title>Login</title></head>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazer Login na Biblioteca Aurora</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
 <body>
-  <h1>Login</h1>
-    <%- include('partials/nav') %>
-  <form action="/auth/login" method="POST">
-    <label>Email:</label><input type="email" name="email" required><br>
-    <label>Senha:</label><input type="password" name="senha" required><br>
-    <button type="submit">Entrar</button>
-  </form>
+    <main class="conteudo">
+        <div class="layout">
+            <!-- Lado esquerdo -->
+            <div class="esquerda">
+                <div class="logo">
+                    <img src="/img/logo-1.png" alt="logo-tela">
+                </div>
+                <h2>Biblioteca<br>Aurora</h2>
+                <p class="texto-suave">Sistema de gestão de acervo</p>
+            </div>
+
+            <!-- Lado direito -->
+            <div class="direita">
+                <h1>Acesso ao Sistema</h1>
+
+                <!-- Aqui entra o formulário funcional -->
+                <form action="/auth/login" method="POST">
+                    <label for="email">Usuário (Email)</label>
+                    <input type="email" id="email" name="email" placeholder="Insira seu email" required>
+
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Insira sua senha" required>
+
+                    <button type="submit" class="botao-entrar">Entrar</button>
+                </form>
+
+                <a href="#" class="esqueceu-senha">Esqueceu sua senha?</a>
+            </div>
+        </div>
+
+        <footer class="rodape">
+            Biblioteca Aurora - Protótipo acadêmico
+        </footer>
+    </main>
 </body>
 </html>

@@ -23,6 +23,7 @@ const usuarioRoutes = require('./routes/usuarios-routes');
 const authRoutes = require("./routes/auth-routes");
 const exemplaresRoutes = require("./routes/exemplar-routes");
 const emprestimoRoutes = require("./routes/emprestimo-routes");
+const { Prisma } = require('@prisma/client');
 
 // Usa as rotas definidas
 app.use('/', homeRoutes);
