@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title><%= livro ? "Editar Livro" : "Novo Livro" %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= livro ? "Editar Livro - Biblioteca Aurora" : "Cadastro de Livro - Biblioteca Aurora" %></title>
+    <link rel="stylesheet" href="/css/cadastrar-livro.css">
 </head>
 <body>
-  <h1><%= livro ? "Editar Livro" : "Novo Livro" %></h1>
+    <main class="conteudo">
+        <section class="cartao-maior">
+            <h2><%= livro ? "Editar Livro" : "Cadastro de Livro" %></h2>
 
-  <form action="<%= livro ? '/livros/' + livro.id + '/update' : '/livros' %>" method="POST">
-    <label for="titulo">Título:</label>
-    <input type="text" id="titulo" name="titulo" value="<%= livro ? livro.titulo : '' %>" required>
+            <form action="<%= livro ? '/livros/' + livro.id + '/update' : '/livros' %>" method="POST" id="form-livro">
 
-    <label for="autor">Autor:</label>
-    <input type="text" id="autor" name="autor" value="<%= livro ? livro.autor : '' %>" required>
+                <label for="titulo">Título</label><br>
+                <input type="text" id="titulo" name="titulo" value="<%= livro ? livro.titulo : '' %>" required>
 
-    <label for="ano_publicacao">Ano:</label>
-    <input type="number" id="ano_publicacao" name="ano_publicacao" value="<%= livro ? livro.ano_publicacao : '' %>" required>
+                <label for="autor">Autor</label><br>
+                <input type="text" id="autor" name="autor" value="<%= livro ? livro.autor : '' %>" required>
 
-    <label for="isbn">ISBN:</label>
-    <input type="text" id="isbn" name="isbn" value="<%= livro ? livro.isbn : '' %>" required>
-    
-    <label for="genero">Gênero:</label>
-    <input type="text" id="genero" name="genero" value="<%= livro ? livro.genero : '' %>">
-    
-    <button type="submit"><%= livro ? "Atualizar" : "Criar" %></button>
-  </form>
+                <div class="lado-lado">
+                    <div>
+                        <label for="editora">Editora</label><br>
+                        <input type="text" id="editora" name="editora" value="<%= livro ? livro.editora : '' %>">
+                    </div>
 
-  <a href="/livros">Voltar para lista</a>
+                    <div>
+                        <label for="ano_publicacao">Ano</label><br>
+                        <input type="number" id="ano_publicacao" name="ano_publicacao" value="<%= livro ? livro.ano_publicacao : '' %>">
+                    </div>
+                </div>
+
+                <label for="isbn">ISBN</label><br>
+                <input type="text" id="isbn" name="isbn" value="<%= livro ? livro.isbn : '' %>">
+
+                <div class="lado-lado">
+                    <div class="pequeno">
+                        <label for="exemplares">Exemplares</label><br>
+                        <input type="number" id="exemplares" name="exemplares" value="<%= livro ? livro.exemplares : 1 %>" min="1">
+                    </div>
+                </div>
+
+                <label for="genero">Gênero</label><br>
+                <input type="text" id="genero" name="genero" value="<%= livro ? livro.genero : '' %>">
+
+                <div class="botoes">
+                    <button type="submit" class="botao"><%= livro ? "Atualizar" : "Salvar" %></button>
+                    <button type="reset" class="botao">Limpar</button>
+                    <a href="/livros" class="botao">Voltar</a>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

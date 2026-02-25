@@ -7,7 +7,7 @@
     "build": "prisma generate",
     "start": "prisma migrate deploy && node src/app.js",
     "dev": "concurrently \"nodemon src/app.js\" \"browser-sync start --config bs-config.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,15 +24,24 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "zod": "^4.3.5"
   },
   "devDependencies": {
     "@prisma/client": "^6.19.1",
     "browser-sync": "^3.0.4",
     "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "prisma": "^6.19.1"
+  },
+  "jest": {
+  "setupFiles": ["<rootDir>/jest.setup.js"]
   }
 }
+

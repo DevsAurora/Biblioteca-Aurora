@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Registrar</title></head>
+<body>
+  <h1>Registrar Usuário</h1>
+    <%- include('partials/nav') %>
+  <form action="/auth/register" method="POST">
+    <label>Nome:</label><input type="text" name="nome" required><br>
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Senha:</label><input type="password" name="senha" required><br>
+    <label>Role:</label>
+    <select name="role">
+      <option value="ALUNO">Aluno</option>
+      <option value="PROFESSOR">Professor</option>
+      <option value="BIBLIOTECARIO">Bibliotecário</option>
+    </select><br>
+    <button type="submit">Registrar</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<h2>Exemplares do Livro <%= livroId %></h2>
+<%- include('partials/nav') %>
+
+<ul>
+  <% exemplares.forEach(ex => { %>
+    <li>
+      Exemplar ID: <%= ex.id %> | Status: <%= ex.status %>
+
+      <!-- Botão Excluir -->
+      <form action="/exemplares/<%= ex.id %>/delete" method="POST" style="display:inline;">
+        <input type="hidden" name="livroId" value="<%= livroId %>">
+        <button type="submit">Excluir</button>
+      </form>
+
+      <!-- Botão Atualizar Status -->
+      <form action="/exemplares/<%= ex.id %>/status" method="POST" style="display:inline;">
+        <input type="hidden" name="livroId" value="<%= livroId %>">
+        <select name="status">
+          <option value="DISPONIVEL" <%= ex.status === "DISPONIVEL" ? "selected" : "" %>>Disponível</option>
+          <option value="EMPRESTADO" <%= ex.status === "EMPRESTADO" ? "selected" : "" %>>Emprestado</option>
+          <option value="RESERVADO" <%= ex.status === "RESERVADO" ? "selected" : "" %>>Reservado</option>
+          <option value="ATRASADO" <%= ex.status === "ATRASADO" ? "selected" : "" %>>Atrasado</option>
+        </select>
+        <button type="submit">Atualizar</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<!-- Botão Adicionar Exemplar -->
+<form action="/exemplares/novo/<%= livroId %>" method="GET" style="display:inline;">
+  <button type="submit">Adicionar Exemplar</button>
+</form>

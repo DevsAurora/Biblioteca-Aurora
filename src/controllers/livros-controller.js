@@ -1,4 +1,5 @@
 const livroService = require("../services/livros-service");
+const exemplarService = require("../services/exemplar-service"); // novo
 
 // Criar livro
 async function postLivro(req, res) {
@@ -33,14 +34,20 @@ async function getLivros(req, res) {
   }
 }
 
-// Buscar livro por ID
+// Buscar livro por ID + exemplares
 async function getLivroById(req, res) {
   try {
-    const livro = await livroService.buscarLivroPorId(req.params.id);
+    const livroId = req.params.id;
+    const livro = await livroService.buscarLivroPorId(livroId);
+
     if (!livro) {
       return res.status(404).json({ message: "Livro não encontrado" });
     }
-    res.render("livros/detalhes", { livro });
+
+    // buscar exemplares do livro
+    const exemplares = await exemplarService.listarPorLivro(livroId);
+
+    res.render("livros/detalhes", { livro, exemplares });
   } catch (err) {
     console.error("Erro ao buscar livro:", err);
     res.status(500).json({ message: "Erro ao buscar livro", error: err.message });

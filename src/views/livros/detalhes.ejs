@@ -5,12 +5,7 @@
 </head>
 <body>
 
-  <nav> <!-- Navegação, deve ser substituida por partials/navbar.ejs -->
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/livros">Livros</a></li>
-      <li><a href="/usuarios"></a></li>
-    </ul>
+  <%- include('../partials/nav') %>
   <h1><%= livro.titulo %></h1>
 
   <p><strong>Título:</strong> <%= livro.titulo %></p>
@@ -24,7 +19,7 @@
   <a href="/livros">Voltar para lista</a> |
   <a href="/livros/form?id=<%= livro.id %>">Editar</a>
 
-    <!-- Botão Editar -->
+  <!-- Botão Editar -->
   <form action="/livros/form" method="GET" style="display:inline;">
     <input type="hidden" name="id" value="<%= livro.id %>">
     <button type="submit">Editar</button>
@@ -35,8 +30,21 @@
     <button type="submit">Excluir</button>
   </form>
 
-</body>
-</html>
+  <hr>
+
+  <!-- Seção de Exemplares -->
+  <h2>Exemplares</h2>
+  <% if (!exemplares || exemplares.length === 0) { %>
+    <p>Nenhum exemplar cadastrado para este livro.</p>
+  <% } else { %>
+    <ul>
+      <% exemplares.forEach(ex => { %>
+        <li>
+          Código Tombo: <%= ex.codigo_tombo %> | Status: <%= ex.status %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
 
 </body>
 </html>

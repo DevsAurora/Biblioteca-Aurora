@@ -1,0 +1,88 @@
+:root {
+  --cor-principal: #2e8b57;
+  --cor-fundo: #f5f7f5;
+  --cor-cartao: #ffffff;
+  --cor-texto: #1f2933;
+  --cor-suave: #6b7280;
+  --borda: #e5e7eb;
+  --raio: 8px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cor-fundo);
+}
+
+.conteudo {
+    max-width: 1000px;
+    margin: 32px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.cartao-maior {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #ddd;
+}
+
+.texto-suave {
+    color: #665;
+    font-size: 14px;
+}
+
+#titulo,
+#autor,
+#editora,
+#ano_publicacao,
+#isbn,
+#exemplares,
+#genero {
+    padding: 10px;
+    margin: 7px;
+    border: 1px solid var(--cor-principal);
+    border-radius: 8px;
+    width: 98%;
+}
+
+.lado-lado {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 99%;
+}
+
+.lado-lado #ano {
+    width: 30%;
+}
+
+.lado-lado #editora {
+    width: 97%;
+}
+
+.botao {
+    padding: 10px;
+    border: 1px solid var(--cor-principal);
+    border-radius: 8px;
+    background-color: var(--cor-principal);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    width: 90px;
+    height: 35px;
+}
+
+.botao:hover {
+    transform: scale(1.05);      
+    filter: brightness(1.1);     
+}
+
+.pequeno {
+    width: 30%;
+}

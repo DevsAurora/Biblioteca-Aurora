@@ -43,6 +43,7 @@ enum Role {
 model Exemplar { // campos id, livro_id, status, relação com Livro 1:N Exemplar
   id            BigInt    @id @default(autoincrement())
   livro_id      BigInt
+  codigo_tombo  String    @unique @db.VarChar(50) // identificação única da cópia física
   status        Status
   livro         Livro     @relation(fields: [livro_id], references: [id])
 
@@ -63,6 +64,7 @@ model Emprestimo { // campos id, usuario_id, exemplar_id, data_emprestimo, data_
   data_emprestimo         DateTime  @default(now()) @db.Timestamp(6)
   data_devolucao_prevista DateTime  @db.Timestamp(6)
   data_devolucao_real     DateTime? @db.Timestamp(6)
+  
   usuario                 Usuario   @relation(fields: [usuario_id], references: [id])
   exemplar                Exemplar  @relation(fields: [exemplar_id], references: [id])
 }

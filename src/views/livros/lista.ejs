@@ -6,13 +6,7 @@
 <body>
   <h1>Lista de Livros</h1>
 
-  <nav></nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/livros">Livros</a></li>
-      <li><a href="/usuarios">Usuarios</a></li>
-    </ul>
-  </nav>
+  <%- include('../partials/nav') %>
 
   <!-- Botão para criar novo livro -->
   <a href="/livros/form">Novo Livro</a>
@@ -33,8 +27,14 @@
           <button type="submit">Excluir</button>
         </form>
 
+        <!-- Botão Gerenciar Exemplares (GET) -->
+        <form action="/exemplares/<%= livro.id %>" method="GET" style="display:inline;">
+          <button type="submit">Gerenciar Exemplares</button>
+        </form>
+
         <!-- Link de detalhes -->
         <a href="/livros/<%= livro.id %>">Detalhes</a>
+
       </li>
     <% }) %>
   </ul>

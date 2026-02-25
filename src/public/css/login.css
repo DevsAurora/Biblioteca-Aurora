@@ -1,0 +1,91 @@
+:root {
+  --cor-principal: #2e8b57;
+  --cor-fundo: #f5f7f5;
+  --cor-cartao: #ffffff;
+  --cor-texto: #1f2933;
+  --cor-suave: #6b7280;
+  --borda: #e5e7eb;
+  --raio: 8px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cor-fundo);
+  overflow: hidden;
+}
+
+.conteudo {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.logo img {
+    height: 150px;
+    width: auto;
+}
+
+.texto-suave {
+  color: #665;
+  font-size: 14px;
+}
+
+.direita{
+  font-weight: bold;
+}
+
+.direita input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #665;
+  border-radius: 8px;
+}
+
+.botao-entrar {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid rgb(209, 209, 201);
+  border-radius: 8px;
+  width: 105%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: var(--cor-texto);
+  color: white;
+}
+
+.esqueceu-senha {
+  color: #665;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.rodape {
+    font-size: 13px;
+    color: var(--cor-suave);
+    padding: 16px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
