@@ -8,7 +8,7 @@ const autorizar = require("../middlewares/authorize");
 
 
 // Listar usuários
-router.get('/', usuarioController.listarUsuarios);
+router.get('/', autenticar, autorizar(["BIBLIOTECARIO"]), usuarioController.listarUsuarios);
 
 // Formulário de criação de novo usuário
 router.get('/form', autenticar, autorizar(["BIBLIOTECARIO"]), usuarioController.formUsuario);
