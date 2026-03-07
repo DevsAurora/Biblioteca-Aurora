@@ -16,8 +16,9 @@ async function login(req, res) {
     // grava token em cookie httpOnly
     res.cookie("token", token, {
       httpOnly: true,   // não acessível via JS do navegador
-      secure: false,    // em produção use true (HTTPS)
-      maxAge: 60 * 60 * 1000 // 1 hora
+      secure: true,    // em produção use true (HTTPS)
+      maxAge: 60 * 60 * 1000, // 1 hora
+      sameSite: "strict" // só envia o cookie para o mesmo site (proteção CSRF)
     });
 
     res.render("login-success", { usuario });
